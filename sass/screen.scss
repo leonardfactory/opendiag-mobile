@@ -1,6 +1,62 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+/*
+ * SCSS Style for OpenDIAG web application,
+ * Generated with compass-coolness.
+ *
+ * Created by leonardo
+ */
 
-@import "compass/reset";
+// Custom colors theme
+$base-color: lighten(#822433, 5%);
+$tabbar-color: #444444;
+$tabbar-icon: white;
+
+@import 'compass/css3/border-radius';
+@import 'compass/css3/images';
+@import 'compass/css3/box-shadow';
+@import 'compass/css3/text-shadow';
+@import "compass/layout.scss";
+
+// Custom font for icons
+@font-face {
+	font-family: 'Web Symbols';
+	src: url('../icons/WebSymbolsRegular.otf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@mixin base-color-matte {
+	background-color: #a82d48;
+	@include filter-gradient(#a82d48, #6b1527, vertical);
+	@include background-image(linear-gradient(top,  #a82d48 0%,#6b1527 100%));
+}
+
+// Tab bar
+//@include sticky-footer(50px, "#content", "#footer-sticky", "footer");
+
+// Title bar
+header {
+	@include base-color-matte;
+	padding: 0.6em;
+	text-align: center;
+}
+
+header h1 {
+	margin: 0;
+	color: white;
+	font-size: 1.4em;
+	font-weight: bold;
+	@include text-shadow(rgba(black, 0.3) 0 2px 0);
+}
+
+footer {
+	bottom: 0;
+	z-index: 1000;
+	width: 100%;
+	position: fixed;
+	height: 50px;
+	background-color: #333;
+}
+
+#content { }
+
+.scrollable-content { }
