@@ -24,10 +24,17 @@ $tabbar-icon: white;
 	font-style: normal;
 }
 
+@font-face {
+	font-family: 'entypo';
+	src: url('../icons/entypo.ttf') format('opentype');
+	font-weight: normal;
+	font-style: normal;
+}
+
 @mixin base-color-matte {
 	background-color: #a82d48;
 	@include filter-gradient(#a82d48, #6b1527, vertical);
-	@include background-image(linear-gradient(top,  #a82d48 0%,#6b1527 100%));
+	@include background-image(linear-gradient(top, #a82d48 0%, #6b1527 100%));
 }
 
 // Tab bar
@@ -48,13 +55,81 @@ header h1 {
 	@include text-shadow(rgba(black, 0.3) 0 2px 0);
 }
 
+// tabbar
 footer {
+	display: -webkit-flex;
 	bottom: 0;
 	z-index: 1000;
 	width: 100%;
 	position: fixed;
-	height: 50px;
-	background-color: #333;
+	height: 68px;
+	background-color: #4c4c4c;
+	@include filter-gradient(#4c4c4c, #131313, vertical);
+	@include background-image(linear-gradient(top, #4c4c4c 0%, #131313 100%));
+}
+
+$buttons-number: 5;
+
+a.tab-button {
+	display: block;
+	text-align: center;
+	color: #bbbbbb;
+	text-decoration: none;
+
+	//display: inline-block;
+	box-sizing: border-box;
+	-webkit-box-sizing: border-box;
+
+	.tab-button-icon {
+		display: block;
+		margin: 0;
+		margin-top: -0.16em;
+		font-family: 'entypo';
+		text-align: center;
+		font-size: 4em;
+		margin-bottom: -16px;
+	}
+
+	.tab-button-text {
+		font-size: 0.6em;
+	}
+
+	@include border-radius(6px);
+	margin: 6px;
+	//width: 86% / $buttons-number;
+
+	-webkit-flex: 1;
+	width: 20%;
+
+	&.center-button {
+		@include background-image(linear-gradient($base-color, darken($base-color, 20%)));
+		@include box-shadow(rgba(white, 0.15) 0 1px 0 0 inset, darken($base-color, 30%) 0 1px 3px);
+		border-bottom: none;
+	}
+}
+
+// News
+.news-item {
+	padding: 1.2em;
+	background-color: #EEEEEE;
+
+	h2 {
+		font-weight: bold;
+		font-size: 1.2em !important;;
+	}
+
+	p {
+		font-size: 0.8em !important;
+		line-height: 1.0em !important;
+		margin: 1em 0 !important;
+		color: lighten(black, 20%);
+		font-weight: normal;
+	}
+
+	span.date {
+		font-size: 0.8em !important;
+		color: $base-color !important;
+	}
 }
 
 #content { }
