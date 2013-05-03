@@ -2,6 +2,8 @@ var appDebug = {};
 
 (function ($)
 {
+	"use strict";
+
 	var app = {};
 
 	app.remoteServerURL = 'http://diagapp.dis.uniroma1.it/';
@@ -38,18 +40,22 @@ var appDebug = {};
 		})
 	};
 
-	_.each(app.stores, function (e)
-	{
-		e.load();
-	});
-
+	// Lists
 	app.lists = {
 		news: List({ store: app.stores.news, selector: '#news-list' })
 	};
 
+	// Listeners
 	app.stores.news.on('load', function ()
 	{
+		console.log('Going to render');
 		app.lists.news.render();
+	});
+
+	// Loading stores
+	_.each(app.stores, function (e)
+	{
+		e.load();
 	});
 
 	appDebug = app; // Debug @todo remove
